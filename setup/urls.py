@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from post.views import PostViewSet, CommentViewSet
+from post.views import PostViewSet, CommentViewSet, ListingCommentPost
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test', include('post.urls')),
     path('', include(router.urls)),
+    path('posts/<int:pk>/comments/', ListingCommentPost.as_view()), 
 ]
